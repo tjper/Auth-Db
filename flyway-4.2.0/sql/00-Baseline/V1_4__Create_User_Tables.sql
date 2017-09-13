@@ -1,8 +1,6 @@
 CREATE TABLE [user].[Users] (
 	UserID NVARCHAR(64) NOT NULL,
 	Email NVARCHAR(128) NOT NULL,
-	FirstName NVARCHAR(64) NOT NULL,
-	LastName NVARCHAR(64) NOT NULL,
 	[Password] NVARCHAR(128) NOT NULL
 );
 GO
@@ -18,14 +16,14 @@ GO
 ---------------------------------------------------------------------------------------------
 
 CREATE TABLE [user].[Logins] (
-	UserUserID NVARCHAR(64) NOT NULL,
+	UserID NVARCHAR(64) NOT NULL,
 	Success BIT NOT NULL,
 	CreateDate DATETIME2 NOT NULL DEFAULT GETUTCDATE()
 );
 GO
 
 ALTER TABLE [user].[Logins] WITH NOCHECK
-ADD CONSTRAINT PK_Logins_UserUserID_CreateDate PRIMARY KEY CLUSTERED (UserUserID, CreateDate)
+ADD CONSTRAINT PK_Logins_UserID_CreateDate PRIMARY KEY CLUSTERED (UserID, CreateDate)
 WITH(FILLFACTOR = 90);
 GO
 
